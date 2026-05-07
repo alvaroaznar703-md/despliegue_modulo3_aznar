@@ -1,0 +1,13 @@
+.footerDiv{
+    display: flex;
+    justify-content: center;
+    background-color: #bac5ce;
+    padding-top: 1rem ;
+
+}
+.footerTexto{
+    font-weight: bold;
+    text-align: right;
+    margin-top: 1rem;
+
+}
