@@ -47,6 +47,26 @@ export const useCarritoStore = create((set, get) => ({
         ),
       };
     }),
+    incrementarCantidad: (id) =>
+  set((state) => ({
+    items: state.items.map((item) =>
+      item.id === id
+        ? {...item, cantidad: item.cantidad + 1}: item)
+          
+})),
+
+decrementarCantidad: (id) =>
+  set((state) => ({
+    items: state.items
+      .map((item) =>
+        item.id === id
+          ? {...item, cantidad: item.cantidad - 1}: item)
+      
+      .filter((item) => item.cantidad > 0),
+  })),
+
+
+
 
   totalItems: () => {
     const { items } = get();
@@ -56,7 +76,7 @@ export const useCarritoStore = create((set, get) => ({
   totalPrecio: () => {
     const { items } = get();
     return items.reduce(
-      (acc, item) => acc + item.precio * item.cantidad,
+      (acc, item) => acc + item.price * item.cantidad,
       0
     );
   },

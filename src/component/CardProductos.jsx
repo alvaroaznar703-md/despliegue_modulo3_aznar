@@ -1,18 +1,29 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { useCarritoStore } from "../store/useCarritoStore";
+import styles from "./CardProductos.module.css";
 
 export const CardProductos = ({ producto }) => {
+  const agregarProducto = useCarritoStore((state) => state.agregarProducto);
   return (
-    <div style={styles.card}>
+    <div className={styles.card}>
       <img
         src={producto.thumbnail}
         alt={producto.title}
-        style={styles.img}
+        className={styles.image}
       />
 
-      <div style={styles.info}>
-        <h3>{producto.title}</h3>
-        <p>${producto.price}</p>
-        <p style={styles.category}>{producto.category}</p>
+      <div>
+        <h3 className={styles.title}>{producto.title}</h3>
+        <p className={styles.description}>{producto.description}</p>
+        <p className={styles.price}>${producto.price}</p>
+        <button className={styles.button} onClick={() =>
+            agregarProducto(producto)
+          }
+        >
+          Agregar
+        </button>
+        <Link to={`/producto/${producto.id}`} className={styles.link}>Ver detalle</Link>
       </div>
     </div>
   );

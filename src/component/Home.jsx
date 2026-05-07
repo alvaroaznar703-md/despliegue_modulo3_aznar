@@ -1,22 +1,22 @@
 import React from 'react'
 import { useFetch } from "../hooks/useFetch";
-import { CardProducto } from "../components/CardProducto";
+import { CardProductos } from "./CardProductos";
+import styles from "./Home.module.css";
 
-const API_URL = `${import.meta.env.VITE_API_BASE_URL}`;
 
 export const Home = () => {
-  const { data: productos, cargando, error } = useFetch(API_URL);
+  const { data: productos, cargando, error } = useFetch("https://dummyjson.com/products");
 
   if (cargando) return <p>Cargando...</p>;
   if (error) return <p>Error</p>;
 
   return (
     <div>
-      <h1>Productos disponibles</h1>
+      <h1 className={styles.title}>Productos disponibles</h1>
 
-      <div>
+      <div className={styles.div}>
         {productos.map((producto) => (
-          <CardProducto
+          <CardProductos
             key={producto.id}
             producto={producto}
           />

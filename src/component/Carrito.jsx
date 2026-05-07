@@ -1,37 +1,57 @@
-import { useCarritoStore } from "../store/CarritoStore";
+import { useCarritoStore } from "../store/useCarritoStore";
+import { Link } from "react-router-dom";
 
 export const Carrito = () => {
-  const items= useCarritoStore((state)=>state.items);
-  const eliminarProducto= useCarritoStore((state)=>state.eliminarProducto);
-  const actulizarCantidad= useCarrtoStore((state)=>state.actulizarCantidad);
-  const vaciarCarrito= useCarritoStore((state)=>state.vaciarCarrito);
-  const totalItems= useCarritoStore((state)=>state.totalItems);
-  const totalPrecio= useCarritoStore((state)=>state.totalPrecio);
+  const items = useCarritoStore((state) => state.items);
+  const eliminarProducto = useCarritoStore((state) => state.eliminarProducto);
+  const vaciarCarrito = useCarritoStore((state) => state.vaciarCarrito);
+  const totalItems = useCarritoStore((state) => state.totalItems);
+  const totalPrecio = useCarritoStore((state) => state.totalPrecio);
+  const incrementarCantidad = useCarritoStore((state) => state.incrementarCantidad);
+  const decrementarCantidad = useCarritoStore((state) => state.decrementarCantidad);
 
-  if(items.length===0){
-    return(
-        <div>
-            <h3>🛒Mi Carrito</h3>
-            <p>Este carrito se encuentra vacio</p>
-
-
-        </div>
-
+  if (items.length === 0) {
+    return (
+      <div>
+        <h2>🛒 Mi Carrito</h2>
+        <p>El carrito está vacío</p>
+        <Link to="/">← Home</Link>
+      </div>
     );
   }
-return(
+
+  return (
     <div>
-        <h3>🛒Mi Carrito ({totalItems()}items)</h3>
-        {items.map((item)=>(
-            <div key={item.id}>
-                <span>{item.nombre}</span>
-                <button onClick={()=>actulizarCantidad(item.id, item.cantidad - 1)}></button>
-                <span>{item.cantidad}</span>
-                <button onClick={()=>actulizarCantidad(item.id, item.cantidad + 1)}></button>
+      <h2>🛒 Mi Carrito ({totalItems()} items)</h2>
 
-            </div>
-        ))}
+      {items.map((item) => (
+        <div key={item.id}>
+          <h3>{item.title}</h3>
+          <p>${item.price}</p>
+
+          <button onClick={() => decrementarCantidad(item.id)}>-1</button>
+
+          <span>{item.cantidad}</span>
+
+          <button onClick={() => incrementarCantidad(item.id)}>+1</button>
+
+          <button onClick={() => eliminarProducto(item.id)}>
+            Eliminar
+          </button>
+
+          <hr />
+        </div>
+      ))}
+
+      <h3>Total: ${totalPrecio()}</h3>
+
+      <button onClick={vaciarCarrito}>
+        Vaciar carrito
+      </button>
+
+      <br />
+
+      <Link to="/">← Seguir comprando</Link>
     </div>
-);
+  );
 };
-

@@ -11,6 +11,7 @@ export const NavBar = () => {
         <Link to="/contacto" className={styles.link}>
         Contacto
         </Link>
+        <Link to="/carrito" className={styles.link}>Carrito</Link>
 
     </nav>
   )

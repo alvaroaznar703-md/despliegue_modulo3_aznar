@@ -18,7 +18,7 @@ export const useFetch = (url) => {
         }
 
         const json = await respuesta.json();
-        setData(json.products);
+        setData(json.products || json);
       } catch (error) {
         setError(error);
       } finally {
