@@ -1,0 +1,7 @@
+.div{
+    display: flex;
+    flex-direction: column;
+}
+.titulo{
+    font-weight: bold;
+}

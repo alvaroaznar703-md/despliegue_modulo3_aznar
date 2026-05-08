@@ -1,0 +1,19 @@
+.div{
+    text-align: center;
+    display: block;
+}
+.titulo{
+  margin-bottom: 1,1rem;
+  text-align: center;
+}
+.button{
+   margin-top: 10px;
+   background-color:#2f2fa6;
+   color: white;
+   border: none;
+   padding: 13px;
+   border-radius: 8px;
+   cursor: pointer;
+   transition: 0.4s;
+}
+

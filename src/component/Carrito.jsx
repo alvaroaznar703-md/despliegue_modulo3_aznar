@@ -1,5 +1,7 @@
 import { useCarritoStore } from "../store/useCarritoStore";
 import { Link } from "react-router-dom";
+import styles from "./Carrito.module.css";
+
 
 export const Carrito = () => {
   const items = useCarritoStore((state) => state.items);
@@ -9,10 +11,12 @@ export const Carrito = () => {
   const totalPrecio = useCarritoStore((state) => state.totalPrecio);
   const incrementarCantidad = useCarritoStore((state) => state.incrementarCantidad);
   const decrementarCantidad = useCarritoStore((state) => state.decrementarCantidad);
+  
+
 
   if (items.length === 0) {
     return (
-      <div>
+      <div className={styles.div}>
         <h2>🛒 Mi Carrito</h2>
         <p>El carrito está vacío</p>
         <Link to="/">← Home</Link>
@@ -21,7 +25,7 @@ export const Carrito = () => {
   }
 
   return (
-    <div>
+    <div className={styles.div}>
       <h2>🛒 Mi Carrito ({totalItems()} items)</h2>
 
       {items.map((item) => (
@@ -29,11 +33,11 @@ export const Carrito = () => {
           <h3>{item.title}</h3>
           <p>${item.price}</p>
 
-          <button onClick={() => decrementarCantidad(item.id)}>-1</button>
+          <button onClick={() => decrementarCantidad(item.id)}>-1 </button>
 
           <span>{item.cantidad}</span>
 
-          <button onClick={() => incrementarCantidad(item.id)}>+1</button>
+          <button onClick={() => incrementarCantidad(item.id)}> +1</button>
 
           <button onClick={() => eliminarProducto(item.id)}>
             Eliminar
@@ -48,6 +52,9 @@ export const Carrito = () => {
       <button onClick={vaciarCarrito}>
         Vaciar carrito
       </button>
+      <Link to="/compras">
+          <button>Finalizar compra</button>
+      </Link>
 
       <br />
 

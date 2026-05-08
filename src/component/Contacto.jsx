@@ -17,7 +17,7 @@ export const Contacto = () => {
           <label>Nombre</label>
           <input 
             {...register("name", { required:"El campo es obligatorio" })}
-            type="text"
+            type="text" placeholder="Ingresa tu Nombre"
           />
           {errors.name && <p className={styles.errores}>{errors.name.message}</p>}
         </div>
@@ -31,13 +31,13 @@ export const Contacto = () => {
                 message:"Formato inválido"
               }
             })}
-            type="email"
+            type="email" placeholder="Ingresa tu Email"
           />
-          {errors.email && <p className={styles.error}>{errors.email.message}</p>}
+          {errors.email && <p className={styles.errores}>{errors.email.message}</p>}
         </div>
         <div className={styles.div}>
           <label>Mensaje</label>
-          <textarea 
+          <textarea placeholder="Deja un Mensaje"
             {...register("message", { required:"El campo es obligatorio" })}
           />
           {errors.message && <p className={styles.errores}>{errors.message.message}</p>}

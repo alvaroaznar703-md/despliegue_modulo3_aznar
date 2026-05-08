@@ -7,6 +7,8 @@ import { Contacto } from './component/Contacto';
 import {Home} from "./component/Home";
 import { DetalleProducto } from './component/DetalleProducto';
 import { Carrito } from './component/Carrito';
+import { Compras } from './component/Compras';
+import { CompraExitosa } from './page/CompraExitosa';
 
 export const App = () => {
   return (
@@ -20,6 +22,9 @@ export const App = () => {
         <Route path="/contacto" element={<Contacto/>} />
         <Route path="/producto/:id" element={<DetalleProducto />} />
         <Route path="/carrito" element={<Carrito />} />
+        <Route path="/compras" element={<Compras />} />
+        <Route path="/compra-exitosa" element={<CompraExitosa />} />
+        
                
 
       </Routes>

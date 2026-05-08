@@ -51,17 +51,19 @@ export const useCarritoStore = create((set, get) => ({
   set((state) => ({
     items: state.items.map((item) =>
       item.id === id
-        ? {...item, cantidad: item.cantidad + 1}: item)
-          
-})),
+        ? { ...item, cantidad: item.cantidad + 1 }
+        : item
+    ),
+  })),
 
 decrementarCantidad: (id) =>
   set((state) => ({
     items: state.items
       .map((item) =>
         item.id === id
-          ? {...item, cantidad: item.cantidad - 1}: item)
-      
+          ? { ...item, cantidad: item.cantidad - 1 }
+          : item
+      )
       .filter((item) => item.cantidad > 0),
   })),
 
