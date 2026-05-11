@@ -17,8 +17,8 @@ export const Carrito = () => {
   if (items.length === 0) {
     return (
       <div className={styles.div}>
-        <h2>🛒 Mi Carrito</h2>
-        <p>El carrito está vacío</p>
+        <h2 className={styles.titulo}>🛒 Mi Carrito</h2>
+        <p className={styles.parrafo}>El carrito está vacío</p>
         <Link to="/">← Home</Link>
       </div>
     );
@@ -32,6 +32,7 @@ export const Carrito = () => {
         <div key={item.id}>
           <h3>{item.title}</h3>
           <p>${item.price}</p>
+           
 
           <button onClick={() => decrementarCantidad(item.id)}>-1 </button>
 
@@ -49,11 +50,11 @@ export const Carrito = () => {
 
       <h3>Total: ${totalPrecio()}</h3>
 
-      <button onClick={vaciarCarrito}>
+      <button className={styles.button} onClick={vaciarCarrito}>
         Vaciar carrito
       </button>
       <Link to="/compras">
-          <button>Finalizar compra</button>
+          <button className={styles.button}>Finalizar compra</button>
       </Link>
 
       <br />
